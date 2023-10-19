@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Testing.Models;
 using System;
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace Testing
 {
@@ -52,6 +52,18 @@ namespace Testing
             return _conn.Query<Category>("SELECT * FROM categories;");
         }
 
+
+        public void DeleteProduct(Product product)
+        {
+            _conn.Execute("DELETE FROM REVIEWS WHERE ProductID = @id;", new { id = product.ProductID });
+            _conn.Execute("DELETE FROM Sales WHERE ProductID = @id;", new { id = product.ProductID });
+            _conn.Execute("DELETE FROM Products WHERE ProductID = @id;", new { id = product.ProductID });
+        }
+
+
+
+
+
         public Product AssignCategory()
         {
             var categoryList = GetCategories();
@@ -63,5 +75,9 @@ namespace Testing
 
 
 
+        private void RedirectToAction(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
