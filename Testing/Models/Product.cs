@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+
 
 namespace Testing.Models
 {
@@ -13,7 +15,7 @@ namespace Testing.Models
         public int OnSale { get; set;}
         public int StockLevel { get; set;}
 
-        public System.Collections.Generic.IEnumerable<Category> Categories { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
 
 
 
